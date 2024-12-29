@@ -1,0 +1,39 @@
+-- Verifica se já existe uma mira na tela para evitar duplicação
+if game.Players.LocalPlayer.PlayerGui:FindFirstChild("Crosshair") then
+    game.Players.LocalPlayer.PlayerGui.Crosshair:Destroy()
+end
+
+-- Criação da ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "Crosshair"
+screenGui.ResetOnSpawn = false
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Função para criar uma linha da cruz
+local function createLine(size, position)
+    local line = Instance.new("Frame")
+    line.Size = size -- Tamanho da linha
+    line.Position = position -- Posição da linha
+    line.BackgroundColor3 = Color3.new(0, 1, 0) -- Cor verde
+    line.BorderSizePixel = 0 -- Remove a borda
+    line.Parent = screenGui
+    return line
+end
+
+-- Tamanho e espessura da linha para uma mira muito pequena
+local thickness = 2 -- Espessura da linha
+local length = 4 -- Comprimento muito curto para deixar as pontas juntas
+
+-- Dimensões da tela (centro)
+local centerX = 0.5
+local centerY = 0.5
+
+-- Criando as linhas da cruz
+-- Linha horizontal esquerda
+createLine(UDim2.new(0, length, 0, thickness), UDim2.new(centerX, -length, centerY, -thickness / 2))
+-- Linha horizontal direita
+createLine(UDim2.new(0, length, 0, thickness), UDim2.new(centerX, 0, centerY, -thickness / 2))
+-- Linha vertical superior
+createLine(UDim2.new(0, thickness, 0, length), UDim2.new(centerX, -thickness / 2, centerY, -length))
+-- Linha vertical inferior
+createLine(UDim2.new(0, thickness, 0, length), UDim2.new(centerX, -thickness / 2, centerY, 0))
