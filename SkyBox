@@ -1,0 +1,11 @@
+local skybox = Instance.new("Sky")
+
+-- Replace the links below with the image IDs you get after uploading to Roblox
+skybox.SkyboxBk = "rbxassetid://85048083407222"
+skybox.SkyboxDn = "rbxassetid://85048083407222"
+skybox.SkyboxFt = "rbxassetid://85048083407222"
+skybox.SkyboxLf = "rbxassetid://85048083407222"
+skybox.SkyboxRt = "rbxassetid://85048083407222"
+skybox.SkyboxUp = "rbxassetid://85048083407222"
+
+skybox.Parent = game.Lighting
